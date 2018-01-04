@@ -115,7 +115,7 @@ public class FotoCsatolasDialog extends DialogFragment implements RefreshMunkala
         Button buttonPhoto = (Button) view.findViewById(R.id.add_photo);
         Button buttonVideo = (Button) view.findViewById(R.id.add_video);
         final int mode = ((MunkalapFragmentInterface)getActivity()).getMode();
-        if (mode != MunkalapActivity.MODE_VIEW && mode != MunkalapActivity.MODE_OWN || (mode == MunkalapActivity.MODE_OWN && !munkalap.isEditableFromOwnList())) {
+        if (mode != MunkalapActivity.MODE_VIEW && mode != MunkalapActivity.MODE_OWN || (mode == MunkalapActivity.MODE_OWN && munkalap.isEditableFromOwnList())) {
             buttonPhoto.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -174,16 +174,6 @@ public class FotoCsatolasDialog extends DialogFragment implements RefreshMunkala
     }
 
     private void createChooserForPhoto(Photo photo) {
-
-        String uploadImageName = "test.mp3";
-        String typeUpload = uploadImageName.substring(uploadImageName.length()-3,uploadImageName.length());
-//        String typeUpload = "mp4";
-        if(typeUpload.trim() == "mp3"){
-            int a = 0;
-            int b = 9;
-        }
-
-
         GPSTracker2 tracker2 = new GPSTracker2(getActivity().getApplicationContext());
         location = tracker2.getLocation();
         if (location != null)
